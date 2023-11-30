@@ -24,7 +24,7 @@ export default function App() {
   return (
     <div>
       <button onClick={handleGenerate}> Generate </button>
-      <ObjectEntities node={rootNode} />;
+      <ObjectEntities node={rootNode} />
       <pre>{JSON.stringify(generatedData.data, null, 2)}</pre>
     </div>
   );

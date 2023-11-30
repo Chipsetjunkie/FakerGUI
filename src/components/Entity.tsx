@@ -8,7 +8,11 @@ import EntityDropdowns from "./EntityDropdowns";
 import EntryChildren from "./EntryChildren";
 import { retrieveKeys } from "../utils/helpers";
 
-export default function ObjectEntity({ node }: Readonly<ObjectEntityType>) {
+export default function ObjectEntity({
+  node,
+  deleteChildNode,
+  isParentRoot,
+}: Readonly<ObjectEntityType>) {
   const [state, setState] = useState<EntityStateType>({
     propertyLabel: "",
     isExpressionComplete: false,
@@ -78,17 +82,12 @@ export default function ObjectEntity({ node }: Readonly<ObjectEntityType>) {
     }));
   }
 
-  function handleDeleteRoot() {
-    console.log("deleting babe");
+  function removeAllChildrenFromCurrentNode() {
     node.children = [];
     setState((prev) => ({
       ...prev,
-      childNodes: [],
+      childNodes: node.children,
     }));
-  }
-
-  function handleDeleteFromParent(){
-
   }
 
   const hasNoChildren = !state.childNodes.length;
@@ -101,13 +100,16 @@ export default function ObjectEntity({ node }: Readonly<ObjectEntityType>) {
       handleOptionSelect={handleOptionSelect}
       propertyLabel={state.propertyLabel}
       handlePropertyLabelChange={handlePropertyLabelChange}
-      handeNodeDelete={handleDeleteFromParent}
+      isImmediateRootChild={isParentRoot}
+      deleteCurrentNodeFromParent={() => deleteChildNode(node)}
     />
   ) : (
     <EntryChildren
-      deleteRoot={handleDeleteRoot}
+      deleteCurrentNodeFromParent={() => deleteChildNode(node)}
+      removeAllChildrenFromCurrentNode={removeAllChildrenFromCurrentNode}
       node={node}
       propertyLabel={state.propertyLabel}
+      isImmediateRootChild={isParentRoot}
       handlePropertyLabelChange={handlePropertyLabelChange}
     />
   );

@@ -7,23 +7,32 @@ export default function EntryChildren({
   node,
   handlePropertyLabelChange,
   propertyLabel,
-  deleteRoot,
+  deleteCurrentNodeFromParent,
+  isImmediateRootChild,
+  removeAllChildrenFromCurrentNode
 }: Readonly<EntryChildrenProps>) {
   return (
     <div>
-      <button
-        onClick={() => {
-          console.log(rootNode);
-        }}
-      >
-        {" "}
-        +{" "}
-      </button>
-      <input onChange={handlePropertyLabelChange} value={propertyLabel} />
-      <div style={{ marginLeft: "10px" }}>
-        <Entities node={node} />
+      <div style={{ display: "flex" }}>
+        <button
+          onClick={() => {
+            console.log(rootNode);
+          }}
+        >
+          {" "}
+          +{" "}
+        </button>
+        <input onChange={handlePropertyLabelChange} value={propertyLabel} />
+        {!isImmediateRootChild && (
+          <button onClick={deleteCurrentNodeFromParent}>X</button>
+        )}
       </div>
-      <button onClick={deleteRoot}>X</button>
+      <div style={{ marginLeft: "10px" }}>
+        <Entities
+          node={node}
+          deleteCurrentEntity={() => removeAllChildrenFromCurrentNode()}
+        />
+      </div>
     </div>
   );
 }

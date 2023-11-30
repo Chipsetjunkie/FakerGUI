@@ -8,7 +8,8 @@ export default function EntityDropdowns({
   handleNestedClick,
   propertyLabel,
   handlePropertyLabelChange,
-  handeNodeDelete,
+  deleteCurrentNodeFromParent,
+  isImmediateRootChild,
 }: Readonly<EntityDropdownProps>) {
   return (
     <div style={{ display: "flex" }}>
@@ -44,7 +45,7 @@ export default function EntityDropdowns({
           </div>
         );
       })}
-      <button onClick={handeNodeDelete}> x</button>
+      {!isImmediateRootChild && <button onClick={deleteCurrentNodeFromParent}> x</button>}
     </div>
   );
 }

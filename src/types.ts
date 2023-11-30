@@ -26,14 +26,17 @@ export interface EntityDropdownProps {
     propertyLabel: string
     isExpressionComplete: boolean;
     handleOptionSelect: (e: DefaultOptionKeys, f: string) => void
-    handeNodeDelete: () => void
+    deleteCurrentNodeFromParent: () => void
+    isImmediateRootChild: boolean
 }
 
 export interface EntryChildrenProps {
     node: KeyNodeType;
     handlePropertyLabelChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     propertyLabel: string;
-    deleteRoot: () => void
+    isImmediateRootChild: boolean;
+    deleteCurrentNodeFromParent: () => void
+    removeAllChildrenFromCurrentNode: () => void
 }
 
 
@@ -42,14 +45,15 @@ export type DefaultOptionKeys = keyof typeof DEFAULT_OPTIONS;
 
 export interface ObjectEntityType {
     addEntry: () => void;
-    deleteEntry: () => void;
+    deleteChildNode: (e: KeyNodeType) => void;
     node: KeyNodeType;
-    _depth?: number;
+    isParentRoot: boolean;
 }
 
 
 export interface ObjectEntriesType {
     node: KeyNodeType;
+    deleteCurrentEntity?: (e: KeyNodeType) => void;
     _depth?: number;
 }
 

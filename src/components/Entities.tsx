@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
-import { ObjectEntriesStateType, ObjectEntriesType } from "../types";
+import {
+  KeyNodeType,
+  ObjectEntriesStateType,
+  ObjectEntriesType,
+} from "../types";
 import ObjectEntity from "./Entity";
 import { KeyNode } from "../dataStore/nodeTree";
 
-export default function Entities({ node, _depth = 1 }: ObjectEntriesType) {
+export default function Entities({
+  node,
+  deleteCurrentEntity = () => {},
+}: ObjectEntriesType) {
   const [entries, setEntries] = useState<ObjectEntriesStateType>({
     data: [],
   });
 
   useEffect(() => {
+    console.log("Renderin");
     setEntries({
       data: node.children,
     });
@@ -23,17 +31,25 @@ export default function Entities({ node, _depth = 1 }: ObjectEntriesType) {
     });
   }
 
-  function deleteEntry() {}
+  function deleteEntry(ChildNode: KeyNodeType) {
+    node.children = node.children.filter((item) => item !== ChildNode);
+    if (node.children.length === 0) {
+      deleteCurrentEntity(node);
+    }
+    setEntries({
+      data: node.children,
+    });
+  }
 
   return (
     <div>
-      {entries.data.map((item) => (
+      {entries.data.map((item, index) => (
         <ObjectEntity
+          deleteChildNode={deleteEntry}
           key={item.id}
+          isParentRoot={node.value === "root" && index === 0}
           node={item}
           addEntry={addEntry}
-          deleteEntry={deleteEntry}
-          _depth={_depth}
         />
       ))}
       <button onClick={addEntry}> Add </button>
