@@ -17,7 +17,6 @@ export default function Entities({
   });
 
   useEffect(() => {
-    console.log("Renderin");
     setEntries({
       data: node.children,
     });

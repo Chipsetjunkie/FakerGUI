@@ -9,12 +9,18 @@ export default function App() {
   const [generatedData, setGeneratedData] = useState({
     count: 5,
     data: {},
-    hasError: false,
+    // flag for force re-rendering
+    flushChildrenState: false,
   });
 
   function validateAndGenerate() {
     if (isValidSchema(rootNode)) {
       handleGenerate();
+    } else {
+      setGeneratedData((prev) => ({
+        ...prev,
+        flushChildrenState: true,
+      }));
     }
   }
 
@@ -26,7 +32,11 @@ export default function App() {
     const fakerData = faker.helpers.multiple(createFakeData, {
       count: generatedData.count,
     });
-    setGeneratedData((prev) => ({ ...prev, data: fakerData }));
+    setGeneratedData((prev) => ({
+      ...prev,
+      data: fakerData,
+      flushChildrenState: false,
+    }));
   }
 
   return (

@@ -95,11 +95,10 @@ export default function ObjectEntity({
     }));
   }
 
-  console.log(node.error);
-
   const hasNoChildren = !state.childNodes.length;
   return hasNoChildren ? (
     <EntityDropdowns
+      node={node}
       dropdowns={state.dropdowns}
       isExpressionComplete={state.isExpressionComplete}
       handleNestedClick={handleNestedCreation}

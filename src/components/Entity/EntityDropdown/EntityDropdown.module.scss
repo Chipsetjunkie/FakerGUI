@@ -11,13 +11,14 @@ $base-font-color: #676767;
 $base-border-radius: 8px;
 $base-max-height: 40px;
 
-
+.root_container {
+  margin-bottom: 10px;
+}
 
 .main_container {
   display: flex;
   max-height: $base-max-height;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .dropdown_container {
@@ -52,13 +53,13 @@ $base-max-height: 40px;
   max-height: 2.2rem;
   background-color: $select-background-color;
   border-radius: $base-border-radius;
-  overflow: hidden;
   .select {
     appearance: none;
     -webkit-appearance: none;
     padding: 0.5rem 2rem 0.5rem 1rem;
     background-color: $select-background-color;
     border: none;
+    border-radius: $base-border-radius;
     font-size: 16px;
   }
   .select_arrow {
@@ -71,9 +72,11 @@ $base-max-height: 40px;
     border-top: 8px solid $select-arrow-color;
     border-bottom: 0px;
   }
+
+  .invalid {
+    border: 1px solid red;
+  }
 }
-
-
 
 .add_button {
   appearance: none;
@@ -93,14 +96,13 @@ $base-max-height: 40px;
   border: 1px solid $base-border-color;
   border-radius: 12px;
   height: 26px;
-  margin-left:8px;
+  margin-left: 8px;
   font-family: monospace;
   cursor: pointer;
-  font-size: 10px; 
+  font-size: 10px;
   padding: 0px 10px 0px 10px;
   color: $base-font-color;
 }
-
 
 .hidden {
   display: none;

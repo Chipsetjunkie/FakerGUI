@@ -28,13 +28,12 @@ export function isValidSchema(node: KeyNode) {
         if (hasError && isValid) {
             isValid = false
         }
-        node.error = [node.value.length === 0, node.children.length < 1, node.children.length < 2]
+        node.error = [node.value.length === 0, node.expression.length < 1, node.expression.length < 2]
         for (const childNode of node.children) {
             checkValidaityAndUpdateFlag(childNode)
         }
     }
     checkValidaityAndUpdateFlag(node)
-    console.log(isValid)
     return isValid
 }
 

@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import rootNode from "../../../dataStore/nodeTree";
 import Entities from "../../Entities/Entities";
 import { EntryChildrenProps } from "./EntityChidren.types";
 import styles from "./EntryChildren.module.scss";
@@ -13,16 +12,17 @@ export default function EntryChildren({
   isImmediateRootChild,
   removeAllChildrenFromCurrentNode,
 }: Readonly<EntryChildrenProps>) {
-  const [errors, setErrors] = useState({
-    hasFilledValue: false,
-    hasInteracted: false,
-  });
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setError(node.error[0]);
+  }, [node.error]);
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
-    // setErrors({
-    //   hasInteracted: true,
-    //   hasFilledValue: e.target.value.length > 0,
-    // });
+    // updating main schema node
+    node.error[0] = false
+
+    setError(false);
     handlePropertyLabelChange(e);
   }
 
@@ -32,9 +32,7 @@ export default function EntryChildren({
         <div className={styles.root_container}>
           <button
             className={styles.add_button}
-            onClick={() => {
-              console.log(rootNode);
-            }}
+            onClick={removeAllChildrenFromCurrentNode}
           >
             {"{"}
           </button>
@@ -54,11 +52,7 @@ export default function EntryChildren({
           )}
         </div>
 
-        <div>
-          {errors.hasInteracted && !errors.hasFilledValue && (
-            <p> Please provide key label</p>
-          )}
-        </div>
+        <div>{error && <p> Invalid key value</p>}</div>
       </div>
       <div className={styles.children_container}>
         <Entities

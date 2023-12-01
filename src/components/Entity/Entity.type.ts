@@ -17,6 +17,7 @@ export type EntityStateType = {
 
 
 export interface EntityDropdownProps {
+    node: KeyNodeType
     dropdowns: ReactiveDropdownOptionTypeState[]
     handleNestedClick: () => void;
     handlePropertyLabelChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
