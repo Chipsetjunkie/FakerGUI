@@ -23,17 +23,17 @@ export function generateSchema(node: KeyNode) {
 export function isValidSchema(node: KeyNode) {
     let isValid = true
 
-    function checkValidaityAndUpdateFlag(node: KeyNode) {
-        const hasError = node.children.length !== 2 || node.value.length === 0
-        if (hasError && isValid) {
-            isValid = false
+    function checkValidityAndUpdateFlag(node: KeyNode) {
+        if (node.value !== "root") {
+            const hasNoError = node.expression.length == 2 && node.value.length > 0
+            isValid = isValid && hasNoError
+            node.error = [node.value.length === 0, node.expression.length < 1, node.expression.length < 2]
         }
-        node.error = [node.value.length === 0, node.expression.length < 1, node.expression.length < 2]
         for (const childNode of node.children) {
-            checkValidaityAndUpdateFlag(childNode)
+            checkValidityAndUpdateFlag(childNode)
         }
     }
-    checkValidaityAndUpdateFlag(node)
+    checkValidityAndUpdateFlag(node)
     return isValid
 }
 
