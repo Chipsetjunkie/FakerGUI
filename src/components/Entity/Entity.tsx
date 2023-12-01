@@ -1,12 +1,16 @@
-import { ObjectEntityType, EntityStateType, DefaultOptionKeys } from "../types";
+import {
+  ObjectEntityType,
+  EntityStateType,
+  DefaultOptionKeys,
+} from "./Entity.type";
 import { useEffect, useState } from "react";
 import { fakerDE as faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
-import { KeyNode } from "../dataStore/nodeTree";
+import { KeyNode } from "../../dataStore/nodeTree";
 
-import EntityDropdowns from "./EntityDropdowns";
-import EntryChildren from "./EntryChildren";
-import { retrieveKeys } from "../utils/helpers";
+import EntityDropdowns from "./EntityDropdown/EntityDropdowns";
+import EntryChildren from "./EntityChildren/EntryChildren";
+import { retrieveKeys } from "../../utils/helpers";
 
 export default function ObjectEntity({
   node,
@@ -78,6 +82,7 @@ export default function ObjectEntity({
     node.children.push(childNode);
     setState((prev) => ({
       ...prev,
+      dropdowns: [prev.dropdowns[0]],
       childNodes: node.children,
     }));
   }
@@ -90,8 +95,9 @@ export default function ObjectEntity({
     }));
   }
 
-  const hasNoChildren = !state.childNodes.length;
+  console.log(node.error);
 
+  const hasNoChildren = !state.childNodes.length;
   return hasNoChildren ? (
     <EntityDropdowns
       dropdowns={state.dropdowns}

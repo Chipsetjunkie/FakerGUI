@@ -1,0 +1,111 @@
+// TODO: move colors to constants
+// TODO: convert them all to rem
+
+// colors
+$select-background-color: #f7f6f3;
+$select-arrow-color: #b7b7b8;
+$base-border-color: #b7b1a4;
+$base-font-color: #676767;
+
+// dimensions
+$base-border-radius: 8px;
+$base-max-height: 40px;
+
+
+
+.main_container {
+  display: flex;
+  max-height: $base-max-height;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dropdown_container {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid $base-border-color;
+  border-radius: 8px;
+  gap: 20px;
+}
+
+.input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid $base-border-color;
+  height: 28px;
+  border-radius: $base-border-radius;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+
+.adjoin_line {
+  border: 1px solid $base-border-color;
+  width: 10px;
+}
+
+.select_container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  max-height: 2.2rem;
+  background-color: $select-background-color;
+  border-radius: $base-border-radius;
+  overflow: hidden;
+  .select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    background-color: $select-background-color;
+    border: none;
+    font-size: 16px;
+  }
+  .select_arrow {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    pointer-events: none;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-top: 8px solid $select-arrow-color;
+    border-bottom: 0px;
+  }
+}
+
+
+
+.add_button {
+  appearance: none;
+  border: 1px solid $base-border-color;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  height: 32px;
+  width: 32px;
+  color: $base-font-color;
+}
+
+.delete_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  border: 1px solid $base-border-color;
+  border-radius: 12px;
+  height: 26px;
+  margin-left:8px;
+  font-family: monospace;
+  cursor: pointer;
+  font-size: 10px; 
+  padding: 0px 10px 0px 10px;
+  color: $base-font-color;
+}
+
+
+.hidden {
+  display: none;
+}
+
+.valid {
+  border-color: #a7f0c3;
+}

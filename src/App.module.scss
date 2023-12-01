@@ -1,0 +1,25 @@
+// colors
+$base-border-color: #b7b1a4;
+$base-font-color: #676767;
+
+.generate_button {
+  appearance: none;
+  border: 1px solid $base-border-color;
+  border-radius: 8px;
+  height: 32px;
+  padding: 0px 10px 0px 10px;
+  color: $base-font-color;
+}
+
+.editor_container {
+  display: flex;
+
+  .editor_element {
+    display: flex;
+    flex: 1;
+  }
+  .partition_line {
+    height: 100vh;
+    border:1px solid $base-border-color;
+  }
+}

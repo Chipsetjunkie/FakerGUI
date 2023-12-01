@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import {
-  KeyNodeType,
   ObjectEntriesStateType,
   ObjectEntriesType,
-} from "../types";
-import ObjectEntity from "./Entity";
-import { KeyNode } from "../dataStore/nodeTree";
+} from "./Entities.type";
+import { KeyNodeType } from "../../types";
+import ObjectEntity from "../Entity/Entity";
+import { KeyNode } from "../../dataStore/nodeTree";
+import styles from "./Entities.module.scss"
 
 export default function Entities({
   node,
   deleteCurrentEntity = () => {},
-}: ObjectEntriesType) {
+}: Readonly<ObjectEntriesType>) {
   const [entries, setEntries] = useState<ObjectEntriesStateType>({
     data: [],
   });
@@ -52,7 +53,7 @@ export default function Entities({
           addEntry={addEntry}
         />
       ))}
-      <button onClick={addEntry}> Add </button>
+      <button className={styles.add_button} onClick={addEntry}> Add new key </button>
     </div>
   );
 }

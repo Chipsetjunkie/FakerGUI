@@ -7,12 +7,14 @@ export class KeyNode implements KeyNodeType {
     children: KeyNodeType[]
     parent: null | KeyNodeType
     id: string
+    error: [boolean, boolean, boolean]
 
     constructor(value: string) {
         this.value = value
         this.expression = []
         this.children = []
         this.parent = null
+        this.error = [false, false, false]
         this.id = uuidv4()
     }
 }
