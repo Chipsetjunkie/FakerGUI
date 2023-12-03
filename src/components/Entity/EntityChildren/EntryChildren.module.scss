@@ -22,10 +22,12 @@ $base-border-radius: 8px;
   border-top-left-radius: 0px;
   border-bottom-left-radius: 0px;
   border-left: 0px;
+  padding: 0px 0px 0px 10px;
 }
 
 .add_button {
   appearance: none;
+  -webkit-appearance: none;
   border: 1px solid $base-border-color;
   border-bottom-left-radius: 8px;
   border-top-left-radius: 8px;
@@ -39,6 +41,7 @@ $base-border-radius: 8px;
     justify-content: center;
     align-items: center;
     appearance: none;
+    -webkit-appearance: none;
     border: 1px solid $base-border-color;
     border-radius: 12px;
     height: 26px;

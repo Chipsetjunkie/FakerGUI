@@ -1,5 +1,5 @@
 import { KeyNode } from "../dataStore/nodeTree"
-import { fakerDE as faker } from "@faker-js/faker";
+import { Faker, fakerDE as faker } from "@faker-js/faker";
 
 //TODO: Figure out type situation
 export function generateSchema(node: KeyNode) {
@@ -19,21 +19,21 @@ export function generateSchema(node: KeyNode) {
     }
 }
 
-
-export function isValidSchema(node: KeyNode) {
+export function isValidSchema(mainNode: KeyNode) {
     let isValid = true
 
     function checkValidityAndUpdateFlag(node: KeyNode) {
-        if (node.value !== "root") {
-            const hasNoError = node.expression.length == 2 && node.value.length > 0
-            isValid = isValid && hasNoError
-            node.error = [node.value.length === 0, node.expression.length < 1, node.expression.length < 2]
-        }
+        node.error[0] = node.value.length === 0
+        node.error[1] = node.children.length === 0 && node.expression.length < 1
+        node.error[2] = node.children.length === 0 && node.expression.length < 2
+
+        isValid = isValid && node.error.every(item => !item)
+
         for (const childNode of node.children) {
             checkValidityAndUpdateFlag(childNode)
         }
     }
-    checkValidityAndUpdateFlag(node)
+    checkValidityAndUpdateFlag(mainNode)
     return isValid
 }
 
@@ -47,6 +47,19 @@ export function retrieveNestedObject(nestedKeys: string[]) {
     return nestedObject
 }
 
+export function sanitizePropertyKeys(object: Faker) {
+    return Object.keys(object).filter((item) => {
+        return (
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            //@ts-expect-error
+            Object.getPrototypeOf(object[item]) != Object.prototype &&
+            !item.startsWith("_") &&
+            item !== "faker" && item !== "helpers"
+        );
+    });
+}
+
+
 export function retrieveKeys(nestedKeys: string[]) {
-    return Object.keys(retrieveNestedObject(nestedKeys))
+    return sanitizePropertyKeys(retrieveNestedObject(nestedKeys))
 }

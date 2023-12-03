@@ -10,7 +10,7 @@ import { KeyNode } from "../../dataStore/nodeTree";
 
 import EntityDropdowns from "./EntityDropdown/EntityDropdowns";
 import EntryChildren from "./EntityChildren/EntryChildren";
-import { retrieveKeys } from "../../utils/helpers";
+import { retrieveKeys, sanitizePropertyKeys } from "../../utils/helpers";
 
 export default function ObjectEntity({
   node,
@@ -18,27 +18,45 @@ export default function ObjectEntity({
   isParentRoot,
 }: Readonly<ObjectEntityType>) {
   const [state, setState] = useState<EntityStateType>({
-    propertyLabel: "",
+    propertyLabel: node.value,
     isExpressionComplete: false,
     dropdowns: [],
-    childNodes: [],
+    childNodes: node.children,
   });
 
   useEffect(() => {
-    const keys = Object.keys(faker).filter((item) => {
-      return (
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-expect-error
-        Object.getPrototypeOf(faker[item]) != Object.prototype &&
-        !item.startsWith("_")
-      );
-    });
+    node.expression.length
+      ? intialiseWithExistingDropdowns()
+      : initialiseDropdowns();
+  }, [node]);
+
+  function intialiseWithExistingDropdowns() {
+    const dropdowns: EntityStateType["dropdowns"] = [];
+    let objectRef = faker;
+    for (const expression of node.expression) {
+      const keys = sanitizePropertyKeys(objectRef);
+      dropdowns.push({ id: uuidv4(), selected: expression, options: keys });
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-expect-error
+      objectRef = objectRef[expression];
+    }
 
     setState((prev) => ({
       ...prev,
+      propertyLabel: node.value,
+      dropdowns,
+    }));
+  }
+
+  function initialiseDropdowns() {
+    const keys = sanitizePropertyKeys(faker);
+    setState((prev) => ({
+      ...prev,
+      propertyLabel: node.value,
       dropdowns: [{ id: uuidv4(), selected: "N/A", options: keys }],
     }));
-  }, []);
+  }
 
   function handleOptionSelect(k: DefaultOptionKeys, value: string) {
     if (state.dropdowns[k].selected == value) return;
@@ -96,6 +114,7 @@ export default function ObjectEntity({
   }
 
   const hasNoChildren = !state.childNodes.length;
+  
   return hasNoChildren ? (
     <EntityDropdowns
       node={node}

@@ -13,7 +13,9 @@ export class KeyNode implements KeyNodeType {
         this.value = value
         this.expression = []
         this.children = []
+        //Not in use currently
         this.parent = null
+        //-----------------
         this.error = [false, false, false]
         this.id = uuidv4()
     }

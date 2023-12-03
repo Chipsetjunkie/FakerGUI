@@ -80,7 +80,7 @@ export default function EntityDropdowns({
                     className={`${styles.select} ${
                       errors[errorObject.title] ? styles.invalid : ""
                     }`}
-                    defaultValue="N/A"
+                    defaultValue={item.selected}
                     onChange={(e) =>
                       updateOption(index as DefaultOptionKeys, e.target.value)
                     }
@@ -90,14 +90,12 @@ export default function EntityDropdowns({
                     </option>
                     {item.options.map((optionItem) => {
                       return (
-                        optionItem !== "faker" && (
-                          <option
-                            key={`${item.id}-${optionItem}`}
-                            value={optionItem}
-                          >
-                            {optionItem}
-                          </option>
-                        )
+                        <option
+                          key={`${item.id}-${optionItem}`}
+                          value={optionItem}
+                        >
+                          {optionItem}
+                        </option>
                       );
                     })}
                   </select>

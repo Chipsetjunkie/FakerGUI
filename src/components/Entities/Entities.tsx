@@ -15,12 +15,12 @@ export default function Entities({
   const [entries, setEntries] = useState<ObjectEntriesStateType>({
     data: [],
   });
-
+  
   useEffect(() => {
     setEntries({
       data: node.children,
     });
-  }, []);
+  }, [node]);
 
   function addEntry() {
     const childNode = new KeyNode("");
