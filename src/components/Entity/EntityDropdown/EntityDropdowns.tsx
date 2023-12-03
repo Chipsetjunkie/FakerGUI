@@ -56,11 +56,16 @@ export default function EntityDropdowns({
   return (
     <div className={styles.root_container}>
       <div className={styles.main_container}>
-        <button className={styles.add_button} onClick={handleNestedClick}>
+        {/* TODO: Troubleshoot style add_button */}
+        <button
+          className={styles.add_nested_button}
+          onClick={handleNestedClick}
+        >
           {" "}
           {"{"}{" "}
         </button>
         <input
+          placeholder="key value"
           className={styles.input}
           onChange={updateKeyValue}
           value={propertyLabel}

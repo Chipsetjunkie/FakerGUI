@@ -4,9 +4,11 @@ import rootNodeData from "./dataStore/nodeTree";
 import { generateSchema, isValidSchema } from "./utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
+import { useToast } from "./context/ToastContext";
 
 
 export default function App() {
+  const {triggerPopup} = useToast()
   const [generatedData, setGeneratedData] = useState({
     count: 5,
     // flag for force re-rendering
@@ -55,10 +57,11 @@ export default function App() {
   }
 
   function saveSchemaLocally() {
-    localStorage.setItem(
-      "schema",
-      JSON.stringify(generatedData.rootNode, (k, v) => k !== "parent" && v)
-    );
+    triggerPopup("Saved to local")
+    // localStorage.setItem(
+    //   "schema",
+    //   JSON.stringify(generatedData.rootNode, (k, v) => k !== "parent" && v)
+    // );
   }
 
   return (
@@ -108,9 +111,7 @@ export default function App() {
           </div>
         </div>
       </div>
-
-      <div className={styles.partition_line} />
-      <div className={styles.editor_element}>
+      <div className={styles.json_element}>
         <pre>{JSON.stringify(generatedData.data, null, 2)}</pre>
       </div>
     </div>

@@ -1,0 +1,81 @@
+// colors
+$base_background_color: #18191d;
+$base_secondary_background_color: #202125;
+$select-background-color: #f7f6f3;
+$select-arrow-color: #b7b7b8;
+$base-border-color: #ffffff4d;
+$base-font-color: #676767;
+$base-danger-primary: #800000;
+$base-danger-secondary: #330000;
+$base-success-primary: #006600;
+$base-success-secondary: #001900;
+
+// dimensions
+$base-border-radius: 8px;
+$base-max-height: 40px;
+
+@mixin button_style {
+  color: white;
+  cursor: pointer;
+}
+
+@mixin primary_button {
+  @include button_style;
+  border: 1px solid $base-border-color;
+  background-color: $base_secondary_background_color;
+}
+
+@mixin success_button {
+  @include button_style;
+  border: 1px solid $base-success-primary;
+  background-color: $base-success-secondary;
+}
+
+@mixin error_button {
+  @include button_style;
+  border: 1px solid $base-danger-primary;
+  background-color: $base-danger-secondary;
+}
+
+.add_nested_button {
+  @include primary_button;
+
+  appearance: none;
+  -webkit-appearance: none;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+  height: 32px;
+  width: 32px;
+}
+
+.input {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid $base-border-color;
+  height: 28px;
+  border-radius: $base-border-radius;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+  padding: 0px 0px 0px 10px;
+  background-color: transparent;
+  color: white;
+  outline: none;
+}
+
+.delete_button {
+  @include error_button;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 12px;
+  height: 26px;
+  margin-left: 8px;
+  font-family: monospace;
+  cursor: pointer;
+  font-size: 10px;
+  padding: 0px 10px 0px 10px;
+}

@@ -31,7 +31,7 @@ export default function EntryChildren({
       <div>
         <div className={styles.root_container}>
           <button
-            className={styles.add_button}
+            className={styles.add_nested_button }
             onClick={removeAllChildrenFromCurrentNode}
           >
             {"{"}

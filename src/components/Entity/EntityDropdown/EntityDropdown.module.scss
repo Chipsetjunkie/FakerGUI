@@ -1,15 +1,4 @@
-// TODO: move colors to constants
-// TODO: convert them all to rem
-
-// colors
-$select-background-color: #f7f6f3;
-$select-arrow-color: #b7b7b8;
-$base-border-color: #b7b1a4;
-$base-font-color: #676767;
-
-// dimensions
-$base-border-radius: 8px;
-$base-max-height: 40px;
+@import "../../../global";
 
 .root_container {
   margin-bottom: 10px;
@@ -23,23 +12,12 @@ $base-max-height: 40px;
 
 .dropdown_container {
   display: flex;
+  background-color: #202125;
   align-items: center;
   padding: 5px 10px 5px 10px;
   border: 1px solid $base-border-color;
   border-radius: 8px;
   gap: 20px;
-}
-
-.input {
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid $base-border-color;
-  height: 28px;
-  border-radius: $base-border-radius;
-  border-top-left-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 0px;
-  padding: 0px 0px 0px 10px;
 }
 
 .adjoin_line {
@@ -51,14 +29,16 @@ $base-max-height: 40px;
   display: flex;
   position: relative;
   align-items: center;
-  max-height: 2.2rem;
-  background-color: $select-background-color;
+  max-height: 2.8rem;
+  border: 1px solid $base-border-color;
+  margin: 4px;
   border-radius: $base-border-radius;
   .select {
     appearance: none;
     -webkit-appearance: none;
     padding: 0.5rem 2rem 0.5rem 1rem;
-    background-color: $select-background-color;
+    background-color: $base-background-color;
+    color: white;
     border: none;
     border-radius: $base-border-radius;
     font-size: 16px;
@@ -77,34 +57,6 @@ $base-max-height: 40px;
   .invalid {
     border: 1px solid red;
   }
-}
-
-.add_button {
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid $base-border-color;
-  border-bottom-left-radius: 8px;
-  border-top-left-radius: 8px;
-  height: 32px;
-  width: 32px;
-  color: $base-font-color;
-}
-
-.delete_button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  appearance: none;
-  -webkit-appearance: none;
-  border: 1px solid $base-border-color;
-  border-radius: 12px;
-  height: 26px;
-  margin-left: 8px;
-  font-family: monospace;
-  cursor: pointer;
-  font-size: 10px;
-  padding: 0px 10px 0px 10px;
-  color: $base-font-color;
 }
 
 .hidden {
