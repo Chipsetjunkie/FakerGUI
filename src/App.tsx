@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ObjectEntities from "./components/Entities/Entities";
 import rootNodeData from "./dataStore/nodeTree";
 import { generateSchema, isValidSchema } from "./utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
 import { useToast } from "./context/ToastContext";
-
+import Editor, {loader} from "@monaco-editor/react";
 
 export default function App() {
-  const {triggerPopup} = useToast()
+  const { triggerPopup } = useToast();
   const [generatedData, setGeneratedData] = useState({
     count: 5,
     // flag for force re-rendering
     triggerLoad: false,
     data: {},
-    rootNode:rootNodeData,
+    rootNode: rootNodeData,
     hasError: false,
   });
 
@@ -57,12 +57,26 @@ export default function App() {
   }
 
   function saveSchemaLocally() {
-    triggerPopup("Saved to local")
-    // localStorage.setItem(
-    //   "schema",
-    //   JSON.stringify(generatedData.rootNode, (k, v) => k !== "parent" && v)
-    // );
+    localStorage.setItem(
+      "schema",
+      JSON.stringify(generatedData.rootNode, (k, v) => k !== "parent" && v)
+    );
+    triggerPopup("Saved to local");
   }
+
+  useEffect(() => {
+    loader.init().then((monaco) => {
+      monaco.editor.defineTheme("vs-json", {
+        base: "vs-dark",
+        inherit: true,
+        rules: [],
+        colors: {
+          "editor.background": "#202125",
+          "scrollbar.shadow":"#202125",
+        },
+      });
+    });
+  }, []);
 
   return (
     <div className={styles.editor_container}>
@@ -112,7 +126,28 @@ export default function App() {
         </div>
       </div>
       <div className={styles.json_element}>
-        <pre>{JSON.stringify(generatedData.data, null, 2)}</pre>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            flex: 1,
+            flexDirection: "column",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+            <button className={styles.copy_button}>Copy</button>
+          </div>
+          <div className={styles.json_monaco_container}>
+            <Editor
+              height="95%"
+              defaultLanguage="json"
+              defaultValue={JSON.stringify(generatedData.data, null, 2)}
+              value={JSON.stringify(generatedData.data, null, 2)}
+              theme="vs-json"
+              options={{ readOnly: true, cursorBlinking: "solid" }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
