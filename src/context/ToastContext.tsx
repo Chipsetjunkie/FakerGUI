@@ -3,7 +3,13 @@ import { createPortal } from "react-dom";
 import Toast from "../components/Toast";
 
 interface ContextProps {
-  triggerPopup: (e:string) => void;
+  triggerPopup: (e: string, k?: "success" | "error") => void;
+}
+
+interface ProviderState{
+  status: boolean,
+  text: string,
+  type: "success" | "error",
 }
 
 const Context = createContext<ContextProps>({
@@ -15,7 +21,11 @@ export function ToastContextProvider({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [showPopup, setShowPopup] = useState({ status: false, text: "" });
+  const [showPopup, setShowPopup] = useState<ProviderState>({
+    status: false,
+    text: "",
+    type: "success",
+  });
   const timerRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -26,12 +36,16 @@ export function ToastContextProvider({
     };
   }, []);
 
-  function triggerPopup(message: string) {
+  function triggerPopup(
+    message: string,
+    type: "success" | "error" = "success"
+  ) {
     if (!showPopup.status) {
-      setShowPopup({ status: true, text: message });
+      setShowPopup({ status: true, text: message, type });
       timerRef.current = setTimeout(() => {
         setShowPopup({
           status: false,
+          type,
           text: "",
         });
       }, 3000);
@@ -43,7 +57,10 @@ export function ToastContextProvider({
       <>
         {children}
         {showPopup.status &&
-          createPortal(<Toast  text={showPopup.text}/>, document.getElementById("popup")!)}
+          createPortal(
+            <Toast text={showPopup.text} type={showPopup.type} />,
+            document.getElementById("popup")!
+          )}
       </>
     </Context.Provider>
   );

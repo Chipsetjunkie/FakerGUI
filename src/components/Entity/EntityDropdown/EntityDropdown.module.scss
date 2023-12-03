@@ -1,7 +1,7 @@
 @import "../../../global";
 
 .root_container {
-  margin-bottom: 10px;
+  margin-bottom: 25px;
 }
 
 .main_container {
@@ -65,4 +65,10 @@
 
 .valid {
   border-color: #a7f0c3;
+}
+
+.invalid_text {
+  font-family: monospace;
+  color: red;
+  margin-left: 32px;
 }

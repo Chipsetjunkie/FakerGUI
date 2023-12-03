@@ -57,20 +57,24 @@ export default function EntityDropdowns({
     <div className={styles.root_container}>
       <div className={styles.main_container}>
         {/* TODO: Troubleshoot style add_button */}
-        <button
-          className={styles.add_nested_button}
-          onClick={handleNestedClick}
-        >
-          {" "}
-          {"{"}{" "}
-        </button>
+        <div>
+          <button
+            className={styles.add_nested_button}
+            onClick={handleNestedClick}
+          >
+            {" "}
+            {"{"}{" "}
+          </button>
+        </div>
         <input
           placeholder="key value"
           className={styles.input}
           onChange={updateKeyValue}
           value={propertyLabel}
         />
-        <div className={styles.adjoin_line} />
+        <div>
+          <div className={styles.adjoin_line} />
+        </div>
         <div
           className={`${styles.dropdown_container} ${
             isExpressionComplete ? styles.valid : ""
@@ -119,7 +123,13 @@ export default function EntityDropdowns({
           </button>
         )}
       </div>
-      <div>{errors.hasInValidValue && <p>Invalid key value</p>}</div>
+      <div>
+        {errors.hasInValidValue && (
+          <p className={styles.invalid_text}>
+            Invalid key value!
+          </p>
+        )}
+      </div>
     </div>
   );
 }

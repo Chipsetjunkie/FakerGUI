@@ -28,13 +28,13 @@ export function isValidSchema(mainNode: KeyNode) {
         node.error[2] = node.children.length === 0 && node.expression.length < 2
 
         isValid = isValid && node.error.every(item => !item)
-
         for (const childNode of node.children) {
             checkValidityAndUpdateFlag(childNode)
         }
     }
+
     checkValidityAndUpdateFlag(mainNode)
-    return isValid
+    return { mainNode, isValid }
 }
 
 export function retrieveNestedObject(nestedKeys: string[]) {

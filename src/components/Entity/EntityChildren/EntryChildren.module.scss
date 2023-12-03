@@ -3,6 +3,11 @@
 .main_container {
   margin-top: 12px;
 }
+
+.nested_children_input_container {
+  margin-bottom: 20px;
+}
+
 .root_container {
   display: flex;
   align-items: center;
@@ -10,4 +15,12 @@
 
 .children_container {
   margin: 10px 0px 10px 10px;
+  border-left: 1px solid $base-border-color;
+  padding:0px 0px 0px 10px;
+}
+
+.invalid_text {
+  font-family: monospace;
+  color: red;
+  margin-left: 32px;
 }

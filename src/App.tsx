@@ -5,7 +5,7 @@ import { generateSchema, isValidSchema } from "./utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
 import { useToast } from "./context/ToastContext";
-import Editor, {loader} from "@monaco-editor/react";
+import Editor, { loader } from "@monaco-editor/react";
 
 export default function App() {
   const { triggerPopup } = useToast();
@@ -27,15 +27,20 @@ export default function App() {
         rootNode,
         triggerLoad: !prev.triggerLoad,
       }));
+      triggerPopup("Loaded schema successfully!");
+    } else {
+      triggerPopup("Nothing to load", "error");
     }
   }
 
   function validateAndGenerate() {
-    if (isValidSchema(generatedData.rootNode)) {
+    const { mainNode, isValid } = isValidSchema(generatedData.rootNode);
+    if (isValid) {
       handleGenerate();
     } else {
       setGeneratedData((prev) => ({
         ...prev,
+        rootNode: structuredClone(mainNode),
         hasError: true,
       }));
     }
@@ -64,6 +69,15 @@ export default function App() {
     triggerPopup("Saved to local");
   }
 
+  async function copyContent(text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+      triggerPopup("Content copied to clipboard");
+    } catch (err) {
+      triggerPopup("Failed to copy to clipboard", "error");
+    }
+  }
+
   useEffect(() => {
     loader.init().then((monaco) => {
       monaco.editor.defineTheme("vs-json", {
@@ -72,7 +86,7 @@ export default function App() {
         rules: [],
         colors: {
           "editor.background": "#202125",
-          "scrollbar.shadow":"#202125",
+          "scrollbar.shadow": "#202125",
         },
       });
     });
@@ -135,7 +149,14 @@ export default function App() {
           }}
         >
           <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button className={styles.copy_button}>Copy</button>
+            <button
+              className={styles.copy_button}
+              onClick={() =>
+                copyContent(JSON.stringify(generatedData.data, null, 2))
+              }
+            >
+              Copy
+            </button>
           </div>
           <div className={styles.json_monaco_container}>
             <Editor

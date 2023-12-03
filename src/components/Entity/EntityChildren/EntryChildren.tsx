@@ -20,7 +20,7 @@ export default function EntryChildren({
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     // updating main schema node
-    node.error[0] = false
+    node.error[0] = false;
 
     setError(false);
     handlePropertyLabelChange(e);
@@ -28,14 +28,16 @@ export default function EntryChildren({
 
   return (
     <div className={styles.main_container}>
-      <div>
+      <div className={styles.nested_children_input_container}>
         <div className={styles.root_container}>
-          <button
-            className={styles.add_nested_button }
-            onClick={removeAllChildrenFromCurrentNode}
-          >
-            {"{"}
-          </button>
+          <div>
+            <button
+              className={styles.add_nested_button}
+              onClick={removeAllChildrenFromCurrentNode}
+            >
+              {"{"}
+            </button>
+          </div>
           <input
             placeholder="key value"
             className={styles.input}
@@ -52,7 +54,7 @@ export default function EntryChildren({
           )}
         </div>
 
-        <div>{error && <p> Invalid key value</p>}</div>
+        <div>{error && <p className={styles.invalid_text}> Invalid key value</p>}</div>
       </div>
       <div className={styles.children_container}>
         <Entities
