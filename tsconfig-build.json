@@ -20,6 +20,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "lib"],
+  // src removed since we don't need it in the final build
+  "include": [ "lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

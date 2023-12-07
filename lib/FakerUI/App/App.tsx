@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import ObjectEntities from "./components/Entities/Entities";
-import rootNodeData from "./dataStore/nodeTree";
-import { generateSchema, isValidSchema } from "./utils/helpers";
+import ObjectEntities from "../components/Entities/Entities";
+import rootNodeData from "../dataStore/nodeTree";
+import { generateSchema, isValidSchema } from "../utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
-import { useToast } from "./context/ToastContext";
+import { ToastContextProvider, useToast } from "../context/ToastContext";
 import Editor, { loader } from "@monaco-editor/react";
 
-export default function App() {
+function FakerGUI() {
   const { triggerPopup } = useToast();
   const [generatedData, setGeneratedData] = useState({
     count: 5,
@@ -172,4 +172,11 @@ export default function App() {
       </div>
     </div>
   );
+}
+
+
+export function App() {
+  return (<ToastContextProvider>
+    <FakerGUI />
+  </ToastContextProvider>)
 }
