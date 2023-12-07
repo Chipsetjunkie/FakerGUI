@@ -1,3 +1,12 @@
+## [1.3.2](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.1...v1.3.2) (2023-12-07)
+
+
+### Bug Fixes
+
+* ux improvements, screen size validation added ([2d84aa7](https://github.com/Chipsetjunkie/vite-library-template/commit/2d84aa785430b731b7bc53bbfc03167105d897d8))
+
+
+
 ## [1.3.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.0...v1.3.1) (2023-12-07)
 
 
