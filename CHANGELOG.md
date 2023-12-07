@@ -1,4 +1,13 @@
-# 1.1.0 (2023-12-07)
+# [1.2.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.1.0...v1.2.0) (2023-12-07)
+
+
+### Features
+
+* package.json updated ([8932834](https://github.com/Chipsetjunkie/vite-library-template/commit/89328341c3038b9b6069bb751976ff0e86913e64))
+
+
+
+# [1.1.0](https://github.com/Chipsetjunkie/vite-library-template/compare/100db3cc662dc93711525a13b32bbae44413e42a...v1.1.0) (2023-12-07)
 
 
 ### Bug Fixes
