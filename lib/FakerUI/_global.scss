@@ -14,6 +14,14 @@ $base-success-secondary: #001900;
 $base-border-radius: 8px;
 $base-max-height: 40px;
 
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+
 @mixin button_style {
   color: white;
   cursor: pointer;

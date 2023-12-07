@@ -6,14 +6,14 @@ interface ContextProps {
   triggerPopup: (e: string, k?: "success" | "error") => void;
 }
 
-interface ProviderState{
+interface ProviderState {
   status: boolean,
   text: string,
   type: "success" | "error",
 }
 
 const Context = createContext<ContextProps>({
-  triggerPopup: () => {},
+  triggerPopup: () => { },
 });
 
 export function ToastContextProvider({
@@ -26,9 +26,19 @@ export function ToastContextProvider({
     text: "",
     type: "success",
   });
-  const timerRef = useRef<number | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
+
 
   useEffect(() => {
+    if (!document.getElementById("popup")) {
+      console.log("portal div created!")
+      const body = document.querySelector("body")
+      const portalDiv = document.createElement("div")
+      portalDiv.setAttribute("id", "popup")
+      body?.appendChild(portalDiv)
+    }
+
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
