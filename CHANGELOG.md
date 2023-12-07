@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.0...v1.3.1) (2023-12-07)
+
+
+### Bug Fixes
+
+*  ui changes ([c389ee5](https://github.com/Chipsetjunkie/vite-library-template/commit/c389ee57db43ef6f8b3c4c2c959f79624de8e6a7))
+
+
+
 # [1.3.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.2.0...v1.3.0) (2023-12-07)
 
 
