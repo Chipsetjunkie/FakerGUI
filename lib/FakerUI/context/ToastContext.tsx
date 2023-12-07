@@ -32,7 +32,6 @@ export function ToastContextProvider({
 
   useEffect(() => {
     if (!document.getElementById("popup")) {
-      console.log("portal div created!")
       const body = document.querySelector("body")
       const portalDiv = document.createElement("div")
       portalDiv.setAttribute("id", "popup")
