@@ -6,6 +6,17 @@ import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
 import { ToastContextProvider, useToast } from "../context/ToastContext";
 import Editor, { loader } from "@monaco-editor/react";
+import Toast from "../components/Toast";
+import { MINIMUM_SCREEN_THRESHOLD } from "../utils/constants";
+
+
+
+function ScreenSizeError() {
+  return window.innerWidth < MINIMUM_SCREEN_THRESHOLD ? <div className={styles.screen_error_element}>
+    <Toast text={"Not optimised for mobile/tab screen"} type="error" />
+  </div> : null
+}
+
 
 function FakerGUI() {
   const { triggerPopup } = useToast();
@@ -94,6 +105,7 @@ function FakerGUI() {
 
   return (
     <div className={styles.editor_container}>
+      <ScreenSizeError />
       <div className={styles.editor_element}>
         <div className={styles.left_pane}>
           <div className={styles.generate_section}>
@@ -142,8 +154,6 @@ function FakerGUI() {
       <div className={styles.json_element}>
         <div
           style={{
-            width: "100%",
-            height: "100%",
             flex: 1,
             flexDirection: "column",
           }}
@@ -161,6 +171,7 @@ function FakerGUI() {
           <div className={styles.json_monaco_container}>
             <Editor
               height="95%"
+              width="100%"
               defaultLanguage="json"
               defaultValue={JSON.stringify(generatedData.data, null, 2)}
               value={JSON.stringify(generatedData.data, null, 2)}
@@ -176,7 +187,8 @@ function FakerGUI() {
 
 
 export function App() {
-  return (<ToastContextProvider>
+
+  return <ToastContextProvider>
     <FakerGUI />
-  </ToastContextProvider>)
+  </ToastContextProvider>
 }

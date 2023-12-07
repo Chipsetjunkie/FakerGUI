@@ -8,3 +8,7 @@ export const OPTIONS_INDEX_MAPPING = {
     0: { title: "hasInvalidCategory" as const, message: "invalid category" },
     1: { title: "hasInvalidSubCategory" as const, message: "invalid sub-category" }
 }
+
+
+
+export const MINIMUM_SCREEN_THRESHOLD = 768
