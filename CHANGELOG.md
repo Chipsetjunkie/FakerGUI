@@ -1,0 +1,22 @@
+# 1.1.0 (2023-12-07)
+
+
+### Bug Fixes
+
+* validation indication fix and ui updated ([0850ba1](https://github.com/Chipsetjunkie/vite-library-template/commit/0850ba176d49d66ca479ce512d79db2b7fc815b0))
+* validation logic incorrection checks children rather than expression, issue corrected ([383069d](https://github.com/Chipsetjunkie/vite-library-template/commit/383069db2244940d40af4d764e0e0923a9b10e59))
+
+
+### Features
+
+* converted app to library ([db2c656](https://github.com/Chipsetjunkie/vite-library-template/commit/db2c6565d66da4989761817e152cdadbe1558c1f))
+* delete feature added ([100db3c](https://github.com/Chipsetjunkie/vite-library-template/commit/100db3cc662dc93711525a13b32bbae44413e42a))
+* local storage added ([ea6255f](https://github.com/Chipsetjunkie/vite-library-template/commit/ea6255f1c6096b08830e0ee7e71492a911ca47d4))
+* monaco added ([ab26968](https://github.com/Chipsetjunkie/vite-library-template/commit/ab26968031465a4bc7c174360e3f11189744e6e5))
+* styles added ([a14906d](https://github.com/Chipsetjunkie/vite-library-template/commit/a14906d9e7fccaa835000fc4f3f520ce67b41058))
+* validations added ([1510746](https://github.com/Chipsetjunkie/vite-library-template/commit/15107469b94376193e3442c5f4bcebb23fd0ee7b))
+* workflow added ([8d5bf68](https://github.com/Chipsetjunkie/vite-library-template/commit/8d5bf688bd97d62f6f3641f6b586e4d0ec4edd3f))
+* workflow edited ([aa9e6ae](https://github.com/Chipsetjunkie/vite-library-template/commit/aa9e6ae098f101e1fdd4b98d45491bf13fd003a5))
+
+
+
