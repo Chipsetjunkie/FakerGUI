@@ -86,7 +86,7 @@ export default function EntityDropdowns({
               <div key={item.id} className={styles.dropdown_item}>
                 <div className={styles.select_container}>
                   <select
-                    className={`${styles.select} ${
+                    className={`${styles.select_item} ${
                       errors[errorObject.title] ? styles.invalid : ""
                     }`}
                     defaultValue={item.selected}

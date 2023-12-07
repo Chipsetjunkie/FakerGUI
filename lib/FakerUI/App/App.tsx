@@ -98,7 +98,7 @@ function FakerGUI() {
         <div className={styles.left_pane}>
           <div className={styles.generate_section}>
             <button
-              className={styles.generate_button}
+              className={styles.generate_section_button}
               onClick={validateAndGenerate}
             >
               Generate{" "}
@@ -108,13 +108,13 @@ function FakerGUI() {
             </button>
 
             <button
-              className={styles.generate_button}
+              className={styles.generate_section_button}
               onClick={saveSchemaLocally}
             >
               Save
             </button>
 
-            <button className={styles.generate_button} onClick={loadFromLocal}>
+            <button className={styles.generate_section_button} onClick={loadFromLocal}>
               Load Saved
             </button>
 
