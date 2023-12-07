@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.2.0...v1.3.0) (2023-12-07)
+
+
+### Features
+
+* package name updated ([86f3f92](https://github.com/Chipsetjunkie/vite-library-template/commit/86f3f92764bdf948c77d42548fa5345b5104e094))
+
+
+
 # [1.2.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.1.0...v1.2.0) (2023-12-07)
 
 
