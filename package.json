@@ -1,5 +1,5 @@
 {
-  "name": "@chipset/datagen",
+  "name": "@chipsetjunkie/datagen",
   "private": false,
   "version": "1.1.0",
   "type": "module",
@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
-    "datagen": "file:.yalc/datagen",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "uuid": "^9.0.1"
