@@ -1,3 +1,12 @@
+## [1.3.5](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.4...v1.3.5) (2023-12-13)
+
+
+### Bug Fixes
+
+* commit hooks and cleanup ([ed564d5](https://github.com/Chipsetjunkie/vite-library-template/commit/ed564d535c25ae6d3210b9a50d47ae6c7be28e93))
+
+
+
 ## [1.3.4](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.2...v1.3.4) (2023-12-13)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * package name updated ([86f3f92](https://github.com/Chipsetjunkie/vite-library-template/commit/86f3f92764bdf948c77d42548fa5345b5104e094))
-
-
-
-# [1.2.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.1.0...v1.2.0) (2023-12-07)
-
-
-### Features
-
-* package.json updated ([8932834](https://github.com/Chipsetjunkie/vite-library-template/commit/89328341c3038b9b6069bb751976ff0e86913e64))
 
 
 
