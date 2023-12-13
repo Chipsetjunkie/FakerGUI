@@ -33,13 +33,23 @@ export default function ObjectEntity({
   function intialiseWithExistingDropdowns() {
     const dropdowns: EntityStateType["dropdowns"] = [];
     let objectRef = faker;
-    for (const expression of node.expression) {
+    let expressionErrors = node.error.slice(1)
+
+    let expressionIndex = 0
+    while (expressionErrors) {
       const keys = sanitizePropertyKeys(objectRef);
-      dropdowns.push({ id: uuidv4(), selected: expression, options: keys });
+
+      dropdowns.push({ id: uuidv4(), selected: expressionErrors[0] ? "N/A" : node.expression[expressionIndex], options: keys });
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-expect-error
-      objectRef = objectRef[expression];
+      objectRef = objectRef[node.expression[expressionIndex]];
+      expressionIndex++
+
+      // injecting n+1 dropdown hence checking after insertion
+      if (expressionErrors[0]) break
+
+      expressionErrors = expressionErrors.slice(1)
     }
 
     setState((prev) => ({
