@@ -1,4 +1,3 @@
-import React from 'react'
 import Toast from '../Toast'
 import { MINIMUM_SCREEN_THRESHOLD } from '../../utils/constants'
 import styles from "./ScreenSizerError.module.scss"

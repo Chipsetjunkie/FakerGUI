@@ -28,6 +28,7 @@ export default function ObjectEntity({
     node.expression.length
       ? intialiseWithExistingDropdowns()
       : initialiseDropdowns();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [node]);
 
   function intialiseWithExistingDropdowns() {
