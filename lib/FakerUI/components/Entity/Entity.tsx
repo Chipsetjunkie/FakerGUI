@@ -6,11 +6,10 @@ import {
 import { useEffect, useState } from "react";
 import { fakerDE as faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
-import { KeyNode } from "../../dataStore/nodeTree";
-
 import EntityDropdowns from "./EntityDropdown/EntityDropdowns";
 import EntryChildren from "./EntityChildren/EntryChildren";
 import { retrieveKeys, sanitizePropertyKeys } from "../../utils/helpers";
+import { KeyNode } from "../../dataStore/nodeTree";
 
 export default function ObjectEntity({
   node,
@@ -23,6 +22,7 @@ export default function ObjectEntity({
     dropdowns: [],
     childNodes: node.children,
   });
+  const hasNoChildren = !state.childNodes.length;
 
   useEffect(() => {
     node.expression.length
@@ -102,6 +102,7 @@ export default function ObjectEntity({
       ...prev,
       dropdowns: [prev.dropdowns[0]],
       childNodes: node.children,
+      isExpressionComplete: false
     }));
   }
 
@@ -113,8 +114,7 @@ export default function ObjectEntity({
     }));
   }
 
-  const hasNoChildren = !state.childNodes.length;
-  
+
   return hasNoChildren ? (
     <EntityDropdowns
       node={node}

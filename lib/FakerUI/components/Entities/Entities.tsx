@@ -8,7 +8,7 @@ import ObjectEntity from "../Entity/Entity";
 import { KeyNode } from "../../dataStore/nodeTree";
 import styles from "./Entities.module.scss"
 
-export default function Entities({
+export default function ObjectEntities({
   node,
   deleteCurrentEntity = () => {},
 }: Readonly<ObjectEntriesType>) {

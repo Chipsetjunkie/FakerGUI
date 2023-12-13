@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import Entities from "../../Entities/Entities";
 import { EntryChildrenProps } from "./EntityChidren.types";
 import styles from "./EntryChildren.module.scss";
+import ObjectEntities from "../../Entities";
 
 export default function EntryChildren({
   node,
@@ -35,7 +35,7 @@ export default function EntryChildren({
               className={styles.add_nested_button}
               onClick={removeAllChildrenFromCurrentNode}
             >
-              {"{"}
+              {"•"}
             </button>
           </div>
           <input
@@ -57,7 +57,7 @@ export default function EntryChildren({
         <div>{error && <p className={styles.invalid_text}> Invalid key value</p>}</div>
       </div>
       <div className={styles.children_container}>
-        <Entities
+        <ObjectEntities
           node={node}
           deleteCurrentEntity={() => removeAllChildrenFromCurrentNode()}
         />

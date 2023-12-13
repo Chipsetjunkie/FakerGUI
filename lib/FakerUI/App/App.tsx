@@ -1,30 +1,21 @@
 import { useEffect, useState } from "react";
-import ObjectEntities from "../components/Entities/Entities";
 import rootNodeData from "../dataStore/nodeTree";
 import { generateSchema, isValidSchema } from "../utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
 import { ToastContextProvider, useToast } from "../context/ToastContext";
-import Editor, { loader } from "@monaco-editor/react";
-import Toast from "../components/Toast";
-import { MINIMUM_SCREEN_THRESHOLD } from "../utils/constants";
-
-
-
-function ScreenSizeError() {
-  return window.innerWidth < MINIMUM_SCREEN_THRESHOLD ? <div className={styles.screen_error_element}>
-    <Toast text={"Not optimised for mobile/tab screen"} type="error" />
-  </div> : null
-}
+import { loader } from "@monaco-editor/react";
+import { AppState } from "../types";
+import PreviewPane from "../container/PreviewPane";
+import SchemaPane from "../container/SchemaPane";
 
 
 function FakerGUI() {
   const { triggerPopup } = useToast();
-  const [generatedData, setGeneratedData] = useState({
+  const [generatedData, setGeneratedData] = useState<AppState>({
     count: 5,
-    // flag for force re-rendering
     triggerLoad: false,
-    data: {},
+    data: [],
     rootNode: rootNodeData,
     hasError: false,
   });
@@ -89,6 +80,13 @@ function FakerGUI() {
     }
   }
 
+  function updateCount(count: number) {
+    setGeneratedData((prev) => ({
+      ...prev,
+      count
+    }))
+  }
+
   useEffect(() => {
     loader.init().then((monaco) => {
       monaco.editor.defineTheme("vs-json", {
@@ -104,83 +102,15 @@ function FakerGUI() {
   }, []);
 
   return (
-    <div className={styles.editor_container}>
-      <ScreenSizeError />
-      <div className={styles.editor_element}>
-        <div className={styles.left_pane}>
-          <div className={styles.generate_section}>
-            <button
-              className={styles.generate_section_button}
-              onClick={validateAndGenerate}
-            >
-              Generate{" "}
-              {generatedData.hasError && (
-                <span style={{ padding: "2px", color: "red" }}> ! </span>
-              )}
-            </button>
-
-            <button
-              className={styles.generate_section_button}
-              onClick={saveSchemaLocally}
-            >
-              Save
-            </button>
-
-            <button className={styles.generate_section_button} onClick={loadFromLocal}>
-              Load Saved
-            </button>
-
-            <div className={styles.datapoint_count_input}>
-              <div className={styles.count_input_tag}>
-                <p> Data-count</p>
-              </div>
-              <input
-                type="number"
-                value={generatedData.count}
-                onChange={(e) =>
-                  setGeneratedData((prev) => ({
-                    ...prev,
-                    count: +e.target.value,
-                  }))
-                }
-              />
-            </div>
-          </div>
-          <div className={styles.root_entity_container}>
-            <ObjectEntities node={generatedData.rootNode} />
-          </div>
-        </div>
-      </div>
-      <div className={styles.json_element}>
-        <div
-          style={{
-            flex: 1,
-            flexDirection: "column",
-          }}
-        >
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
-            <button
-              className={styles.copy_button}
-              onClick={() =>
-                copyContent(JSON.stringify(generatedData.data, null, 2))
-              }
-            >
-              Copy
-            </button>
-          </div>
-          <div className={styles.json_monaco_container}>
-            <Editor
-              height="95%"
-              width="100%"
-              defaultLanguage="json"
-              defaultValue={JSON.stringify(generatedData.data, null, 2)}
-              value={JSON.stringify(generatedData.data, null, 2)}
-              theme="vs-json"
-              options={{ readOnly: true, cursorBlinking: "solid" }}
-            />
-          </div>
-        </div>
-      </div>
+    <div className={styles.root_editor_container}>
+      <SchemaPane
+        validateAndGenerate={validateAndGenerate}
+        generatedData={generatedData}
+        saveSchemaLocally={saveSchemaLocally}
+        loadFromLocal={loadFromLocal}
+        updateCount={(count) => updateCount(count)}
+      />
+      <PreviewPane copyContent={copyContent} generatedData={generatedData} />
     </div>
   );
 }

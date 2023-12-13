@@ -1,7 +1,7 @@
-@import "../../../global";
+@use "../../../global";
 
 .main_container {
-  margin-top: 12px;
+  margin-top: 4px;
 }
 
 .nested_children_input_container {
@@ -15,7 +15,7 @@
 
 .children_container {
   margin: 10px 0px 10px 10px;
-  border-left: 1px solid $base-border-color;
+  border-left: 1px solid global.$base-border-color;
   padding:0px 0px 0px 10px;
 }
 

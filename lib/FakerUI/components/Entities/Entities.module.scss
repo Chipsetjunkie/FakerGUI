@@ -1,7 +1,7 @@
-@import "../../global";
+@use "../../global";
 
 .add_button {
-  @include primary_button;
+  @include global.primary_button;
 
   appearance: none;
   border-radius: 8px;

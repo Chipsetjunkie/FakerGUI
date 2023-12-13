@@ -1,3 +1,3 @@
-import Entities from "./Entities";
+import ObjectEntities from "./Entities";
 
-export default Entities
+export default ObjectEntities
