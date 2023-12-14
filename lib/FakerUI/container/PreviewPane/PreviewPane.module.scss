@@ -1,16 +1,14 @@
-@use "../../global";
+@use "../../base";
 
-.preview_root_container {
+.preview_pane_root_container {
   padding: 20px;
-  width: 100%;
-  display: flex;
-  flex: 0.75;
+  height: 100%;
   background-color: #202125;
   margin: 20px;
   border-radius: 12px;
-  border: 1px solid global.$base-border-color;
+  border: 1px solid base.$base-border-color;
   .preview_copy_button {
-    @include global.primary_button;
+    @include base.primary_button;
     appearance: none;
     border-radius: 8px;
     height: 32px;
@@ -19,11 +17,8 @@
   }
 
   .preview_monaco_container {
+    margin-top:20px;
     width: 100%;
-    height: 95%;
-    display: flex;
-    flex: 1;
-    align-items: center;
-    justify-content: center;
+    height: 100%;
   }
 }

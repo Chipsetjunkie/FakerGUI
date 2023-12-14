@@ -1,4 +1,4 @@
-@use "../../../global";
+@use "../../../base";
 
 .main_container {
   margin-top: 4px;
@@ -15,7 +15,7 @@
 
 .children_container {
   margin: 10px 0px 10px 10px;
-  border-left: 1px solid global.$base-border-color;
+  border-left: 1px solid base.$base-border-color;
   padding:0px 0px 0px 10px;
 }
 
