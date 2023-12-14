@@ -100,6 +100,9 @@ $generate_button_border_color: #335414;
 
 // TODO: Convert it into mixin
 %control_button_style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   width: 42px;
   height: 42px;
@@ -141,15 +144,21 @@ $generate_button_border_color: #335414;
   justify-content: center;
   left:80px;
   top:50%;
-  background-color: white;
-  border: 1px solid black;
+  background-color: black;
   transform: translateY(-50%);
   z-index: 1;
   border-radius: 25px;
 
+  &::after{
+    content:"";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    z-index: -1;
+  }
   .show_button {
     @extend %control_button_style;
-    border: 1px solid $border_color;
     border-radius: 25px;
     transform: rotate(90deg);
     transition: 0.5s transform;
@@ -160,9 +169,7 @@ $generate_button_border_color: #335414;
 }
 
 .show_button__icon {
-  width: 48px;
+  width: 100%;
   position: relative;
-  top: -4px;
-  left: -4px;
-  height: 48px;
+  height: 100%;
 }
