@@ -1,3 +1,12 @@
+## [1.4.2](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.4.1...v1.4.2) (2023-12-14)
+
+
+### Bug Fixes
+
+* minor ui improvements ([51f963e](https://github.com/Chipsetjunkie/vite-library-template/commit/51f963ebb79752b644576cd96afafbd461866fc5))
+
+
+
 ## [1.4.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.4.0...v1.4.1) (2023-12-14)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * error ui cue for subcategory fixed ([1f41050](https://github.com/Chipsetjunkie/vite-library-template/commit/1f410500fda63b8a580376825889dd9d55817b39))
-
-
-
-## [1.3.2](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.1...v1.3.2) (2023-12-07)
-
-
-### Bug Fixes
-
-* ux improvements, screen size validation added ([2d84aa7](https://github.com/Chipsetjunkie/vite-library-template/commit/2d84aa785430b731b7bc53bbfc03167105d897d8))
 
 
 
