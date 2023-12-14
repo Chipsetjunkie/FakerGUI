@@ -1,0 +1,168 @@
+@use "../../base";
+
+$border_color: #ffffff33;
+$background_color: #030409;
+$generate_button_error_color: #7b1d1d;
+$generate_button_background_color: #272b30;
+$generate_button_border_color: #335414;
+
+.control_dock_root_container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  &.control_dock_root_container__expanded{
+    width: fit-content;
+  }
+  &.control_dock_root_container__collapsed{
+    width: 0px;
+  }
+}
+
+.control_dock_container {
+  position: relative;
+  z-index: -1;
+  display: flex;
+  padding: 12px;
+  width: 60px;
+  flex-direction: column;
+  align-items: center;
+  gap:12px;
+  background: $background_color;
+  border: 1px solid $border_color;
+  border-left: none;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+  height: fit-content;
+  transition: 0.5s transform;
+  transform: translateX(-150%);
+  &.control_dock_container__show {
+    transform: translateX(0%);
+  }
+
+  .separator {
+    border: 1px solid $border_color;
+    width: 40px;
+    height: 1px;
+  }
+  .right_side_controller {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:12px;
+
+    .datapoint_count_input {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      overflow: hidden;
+      width: 40px;
+      height: 48px;
+      border: 1px solid base.$base-border-color;
+
+      .count_input_tag {
+        @include base.primary_button;
+        display: flex;
+        position: relative;
+        top: 2px;
+        flex: 0.25;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        cursor: default;
+        align-items: center;
+        border-bottom: 1px solid base.$base-border-color;
+        font-family: monospace;
+        padding: 5px;
+        padding-top: 0px;
+        p {
+          font-size: 10px;
+        }
+      }
+
+      input {
+        appearance: none;
+        -webkit-appearance: none;
+        border: none;
+        padding: 4px;
+        font-family: monospace;
+        outline: none;
+        font-size: 16px;
+        background-color: #000;
+        padding-top: 10px;
+        height: 20px;
+        text-align: center;
+        width: 48px;
+        color: white;
+      }
+    }
+  }
+}
+
+// TODO: Convert it into mixin
+%control_button_style {
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  background-color: transparent;
+}
+
+.control_button {
+  @extend %control_button_style;
+
+  &:hover {
+    border: 1px solid $border_color;
+  }
+
+  &.generate_button {
+    border: 1px solid $generate_button_border_color;
+    background-color: $generate_button_background_color;
+    border-radius: 4px;
+    width: 32px;
+    height: 32px;
+
+    &.__error {
+      border: 1px solid $generate_button_error_color;
+    }
+  }
+}
+
+.control_button__icon {
+  width: 18px;
+  height: 18px;
+}
+
+.docker_show_button_container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left:80px;
+  top:50%;
+  background-color: white;
+  border: 1px solid black;
+  transform: translateY(-50%);
+  z-index: 1;
+  border-radius: 25px;
+
+  .show_button {
+    @extend %control_button_style;
+    border: 1px solid $border_color;
+    border-radius: 25px;
+    transform: rotate(90deg);
+    transition: 0.5s transform;
+    &.show_button__active {
+      transform: rotate(-90deg);
+    }
+  }
+}
+
+.show_button__icon {
+  width: 48px;
+  position: relative;
+  top: -4px;
+  left: -4px;
+  height: 48px;
+}

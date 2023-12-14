@@ -15,16 +15,6 @@ $base-border-radius: 8px;
 $base-max-height: 40px;
 $layout-breakpoint-small: 960px;
 
-* {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  font-family: monospace;
-  font-size: 12px;
-}
-
-
-
 @mixin button_style {
   color: white;
   cursor: pointer;
@@ -85,6 +75,7 @@ $layout-breakpoint-small: 960px;
   border-radius: 12px;
   height: 26px;
   margin-left: 8px;
+  white-space: nowrap;
   font-family: monospace;
   cursor: pointer;
   font-size: 10px;

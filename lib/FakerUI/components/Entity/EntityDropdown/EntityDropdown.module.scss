@@ -1,4 +1,4 @@
-@use "../../../global";
+@use "../../../base";
 
 .root_container {
   margin-bottom: 25px;
@@ -6,7 +6,7 @@
 
 .main_container {
   display: flex;
-  max-height: global.$base-max-height;
+  max-height: base.$base-max-height;
   align-items: center;
 }
 
@@ -15,13 +15,13 @@
   background-color: #202125;
   align-items: center;
   padding: 5px 10px 5px 10px;
-  border: 1px solid global.$base-border-color;
+  border: 1px solid base.$base-border-color;
   border-radius: 8px;
   gap: 20px;
 }
 
 .adjoin_line {
-  border: 1px solid global.$base-border-color;
+  border: 1px solid base.$base-border-color;
   width: 10px;
 }
 
@@ -30,17 +30,17 @@
   position: relative;
   align-items: center;
   max-height: 40px;
-  border: 1px solid global.$base-border-color;
+  border: 1px solid base.$base-border-color;
   margin: 4px;
-  border-radius: global.$base-border-radius;
+  border-radius: base.$base-border-radius;
   .select_item {
     appearance: none;
     -webkit-appearance: none;
     padding: 0.5rem 2rem 0.5rem 1rem;
-    background-color: global.$base-background-color;
+    background-color: base.$base-background-color;
     color: white;
     border: none;
-    border-radius: global.$base-border-radius;
+    border-radius: base.$base-border-radius;
     font-family: monospace;
     font-size: 14px;
     height: 36px;
@@ -52,7 +52,7 @@
     pointer-events: none;
     transform: translateY(-50%);
     border: 8px solid transparent;
-    border-top: 8px solid global.$select-arrow-color;
+    border-top: 8px solid base.$select-arrow-color;
     border-bottom: 0px;
   }
 
