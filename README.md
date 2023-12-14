@@ -12,9 +12,12 @@ A simple ui wrapper around faker api for quick prototyping. You can generate the
 
 
 ### Know issues
-- Monaco screen flicker on scroll.
+- ~~Monaco screen flicker on scroll.~~
 - ~~Clicking nested button multiple times breaks the category completeness ui queue.~~
+- Existence of some deprecated methods
 
 ### Roadmap
-- [ ] Responsive ui improvments
+- [X] Responsive ui improvments
 - [ ] Accessibilty improvements required
+- [ ] Identify deprecated sub-categories
+- [ ] Comprehensive tests
