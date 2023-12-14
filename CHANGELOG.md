@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.4.0...v1.4.1) (2023-12-14)
+
+
+### Bug Fixes
+
+* [css-scoping] control dock alignment adjusted ([b83189c](https://github.com/Chipsetjunkie/vite-library-template/commit/b83189cac01a05fb7d553042ae8b3c16e4f6b869))
+
+
+
 # [1.4.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.5...v1.4.0) (2023-12-14)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * ux improvements, screen size validation added ([2d84aa7](https://github.com/Chipsetjunkie/vite-library-template/commit/2d84aa785430b731b7bc53bbfc03167105d897d8))
-
-
-
-## [1.3.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.0...v1.3.1) (2023-12-07)
-
-
-### Bug Fixes
-
-*  ui changes ([c389ee5](https://github.com/Chipsetjunkie/vite-library-template/commit/c389ee57db43ef6f8b3c4c2c959f79624de8e6a7))
 
 
 
