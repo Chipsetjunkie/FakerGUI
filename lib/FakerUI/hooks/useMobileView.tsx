@@ -4,6 +4,11 @@ export default function useMobileView(threshold?: number) {
     const SCREEN_SIZE_BREAKPOINT = threshold || 980
     const [isSmallScreen, setIsSmallScreen] = useState(false)
 
+    useEffect(() => {
+        setIsSmallScreen(window.innerWidth < SCREEN_SIZE_BREAKPOINT)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     useEffect(() => {
         function handleResize() {

@@ -137,7 +137,7 @@ function FakerGUI() {
       </div>}
       {showPreviewPanel &&
         <div className={styles.panel_root_container}>
-          <div className={styles.panel_element_container} style={{ justifyContent: "flex-end" }}>
+          <div className={styles.panel_element_container} style={{ justifyContent: "flex-end"}}>
             <PreviewPane
               isMobile={isMobile}
               copyContent={copyContent}
