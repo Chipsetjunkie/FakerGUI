@@ -1,4 +1,4 @@
-import { KeyNodeType } from "../../types";
+import { KeyNodeType } from "@lib/FakerUI/types";
 
 export interface ObjectEntriesType {
     node: KeyNodeType;

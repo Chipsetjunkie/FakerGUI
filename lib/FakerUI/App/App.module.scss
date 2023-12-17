@@ -1,11 +1,11 @@
 @use "../base";
 
 .root_editor_container {
+  position: relative;
   display: flex;
   flex:1;
   background-color: base.$base_background_color;
   overflow:hidden;
-  height: 100vh;
 }
 
 .panel_root_container {

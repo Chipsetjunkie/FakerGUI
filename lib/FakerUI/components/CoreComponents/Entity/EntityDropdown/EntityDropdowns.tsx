@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { DefaultOptionKeys, EntityDropdownProps } from "../Entity.type";
-import {
-  DEFAULT_OPTIONS,
-  OPTIONS_INDEX_MAPPING,
-} from "../../../utils/constants";
 import styles from "./EntityDropdown.module.scss";
+import { OPTIONS_INDEX_MAPPING, DEFAULT_OPTIONS } from "@lib/FakerUI/utils/constants";
 
 export default function EntityDropdowns({
   handleOptionSelect,
@@ -76,9 +73,8 @@ export default function EntityDropdowns({
           <div className={styles.adjoin_line} />
         </div>
         <div
-          className={`${styles.dropdown_container} ${
-            isExpressionComplete ? styles.valid : ""
-          }`}
+          className={`${styles.dropdown_container} ${isExpressionComplete ? styles.valid : ""
+            }`}
         >
           {dropdowns.map((item, index) => {
             const errorObject = OPTIONS_INDEX_MAPPING[index as 0 | 1];
@@ -86,9 +82,8 @@ export default function EntityDropdowns({
               <div key={item.id} className={styles.dropdown_item}>
                 <div className={styles.select_container}>
                   <select
-                    className={`${styles.select_item} ${
-                      errors[errorObject.title] ? styles.invalid : ""
-                    }`}
+                    className={`${styles.select_item} ${errors[errorObject.title] ? styles.invalid : ""
+                      }`}
                     defaultValue={item.selected}
                     onChange={(e) =>
                       updateOption(index as DefaultOptionKeys, e.target.value)

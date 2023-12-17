@@ -1,24 +1,47 @@
 @use "../../base";
-
-.preview_pane_root_container {
-  padding: 20px;
+.preview_pane_backdrop_container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 100%;
-  background-color: #202125;
-  margin: 20px;
-  border-radius: 12px;
-  border: 1px solid base.$base-border-color;
-  .preview_copy_button {
-    @include base.primary_button;
-    appearance: none;
-    border-radius: 8px;
-    height: 32px;
-    padding: 0px 10px 0px 10px;
-    align-self: flex-end;
-  }
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.55);
+  .preview_pane_root_container {
+    position: inherit;
+    padding: 20px;
+    width: calc(max(50vw, 320px));
+    height: 75vh;
+    background-color: #202125;
+    margin: 20px;
+    border-radius: 12px;
+    border: 1px solid base.$base-border-color;
+    .preview_copy_button {
+      @include base.primary_button;
+      appearance: none;
+      border-radius: 8px;
+      height: 32px;
+      padding: 0px 10px 0px 10px;
+      align-self: flex-end;
+    }
+    .preview_close_button{
+      @include base.primary_button;
+      appearance: none;
+      border-radius: 8px;
+      height: 32px;
+      width: 32px;
+      padding: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-  .preview_monaco_container {
-    margin-top:20px;
-    width: 100%;
-    height: 95%;
+    .preview_monaco_container {
+      margin-top: 20px;
+      width: 100%;
+      height: 95%;
+    }
   }
 }

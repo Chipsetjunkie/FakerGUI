@@ -1,5 +1,4 @@
-import { KeyNodeType } from "../../../types";
-
+import { KeyNodeType } from "@lib/FakerUI/types";
 
 export interface EntryChildrenProps {
     node: KeyNodeType;

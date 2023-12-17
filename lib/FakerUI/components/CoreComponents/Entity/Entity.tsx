@@ -8,8 +8,9 @@ import { fakerDE as faker } from "@faker-js/faker";
 import { v4 as uuidv4 } from "uuid";
 import EntityDropdowns from "./EntityDropdown/EntityDropdowns";
 import EntryChildren from "./EntityChildren/EntryChildren";
-import { retrieveKeys, sanitizePropertyKeys } from "../../utils/helpers";
-import { KeyNode } from "../../dataStore/nodeTree";
+
+import { KeyNode } from "@lib/FakerUI/dataStore/nodeTree";
+import { retrieveKeys, sanitizePropertyKeys } from "@lib/FakerUI/utils/helpers";
 
 export default function ObjectEntity({
   node,

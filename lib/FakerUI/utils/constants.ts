@@ -10,3 +10,12 @@ export const OPTIONS_INDEX_MAPPING = {
 }
 
 export const MINIMUM_SCREEN_THRESHOLD = 768
+export const PORTAL_TOAST_ID = "toast_container"
+
+
+export const THEME = Object.freeze({
+    canvasMaskColor: "#36373b",
+    canvasNodeColor: "#909092",
+    canvasMiniMapBackgroundColor: "#202125",
+    canvasBackgroundColor: "#18191d"
+})

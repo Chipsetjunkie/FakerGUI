@@ -1,20 +1,37 @@
 import { useEffect, useState } from "react";
-import rootNodeData from "../dataStore/nodeTree";
+import rootNodeData from "@lib/FakerUI/dataStore/nodeTree";
 import { generateSchema, isValidSchema } from "../utils/helpers";
 import { fakerDE as faker } from "@faker-js/faker";
 import styles from "./App.module.scss";
 import { ToastContextProvider, useToast } from "../context/ToastContext";
 import { loader } from "@monaco-editor/react";
-import { AppState } from "../types";
-import PreviewPane from "../container/PreviewPane";
-import SchemaPane from "../container/SchemaPane";
-import "../global.scss";
-import ControlDock from "../components/ControlDock";
-import useMobileView from "../hooks/useMobileView";
+import { AppState } from "@lib/FakerUI/types";
+import PreviewPane from "@lib/FakerUI/container/PreviewPane";
+import SchemaPane from "@lib/FakerUI/container/SchemaPane";
+import "@lib/FakerUI/global.scss";
+import ControlDock from "@lib/FakerUI/components/CoreComponents/ControlDock";
 
-function FakerGUI() {
+import 'reactflow/dist/style.css';
+import Canvas from "../components/FeatureComponents/Canvas";
+
+
+
+function SchemaWrapped(props: { data: AppState }) {
+  const generatedData: AppState = props.data
+  return generatedData && <div className={styles.panel_root_container} style={{ paddingLeft: "40px" }}>
+    <div className={styles.panel_element_container}>
+      <SchemaPane
+        generatedData={generatedData}
+      />
+    </div>
+  </div>
+}
+
+
+
+export function FakerGUI() {
+
   const { triggerPopup } = useToast();
-  const isMobile = useMobileView()
   const [isEditorView, setIsEditorView] = useState(true)
   const [generatedData, setGeneratedData] = useState<AppState>({
     count: 5,
@@ -23,6 +40,7 @@ function FakerGUI() {
     rootNode: rootNodeData,
     hasError: false,
   });
+
 
   function loadFromLocal() {
     const cache = localStorage.getItem("schema");
@@ -113,33 +131,22 @@ function FakerGUI() {
   }, []);
 
 
-  const showEditorPanel = isMobile ? isEditorView : true
-  const showPreviewPanel = isMobile ? !isEditorView : true
+  const showPreviewPanel = !isEditorView
 
   return (
     <div className={styles.root_editor_container}>
-      <ControlDock
-        isMobile = {isMobile}
-        isEditorView = {isEditorView}
+      <Canvas node={SchemaWrapped} customNodeProps={generatedData} />
+      {!showPreviewPanel ? <ControlDock
         generateData={validateAndGenerate}
         loadData={loadFromLocal}
         updateCount={updateCount}
         saveSchema={saveSchemaLocally}
         count={generatedData.count}
-      />
-      {showEditorPanel && <div className={styles.panel_root_container} style={{ paddingLeft: "40px" }}>
-        <div className={styles.panel_element_container}>
-          <SchemaPane
-            isMobile={isMobile}
-            generatedData={generatedData}
-          />
-        </div>
-      </div>}
-      {showPreviewPanel &&
+      /> :
         <div className={styles.panel_root_container}>
-          <div className={styles.panel_element_container} style={{ justifyContent: "flex-end"}}>
+          <div className={styles.panel_element_container} style={{ justifyContent: "flex-end" }}>
             <PreviewPane
-              isMobile={isMobile}
+              onClose={() => setIsEditorView(true)}
               copyContent={copyContent}
               generatedData={generatedData}
             />
@@ -149,6 +156,9 @@ function FakerGUI() {
     </div>
   );
 }
+
+
+
 
 export function App() {
   return (

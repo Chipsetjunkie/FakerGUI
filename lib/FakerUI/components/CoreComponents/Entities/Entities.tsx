@@ -3,19 +3,19 @@ import {
   ObjectEntriesStateType,
   ObjectEntriesType,
 } from "./Entities.type";
-import { KeyNodeType } from "../../types";
+import { KeyNodeType } from "@lib/FakerUI/types";
 import ObjectEntity from "../Entity/Entity";
-import { KeyNode } from "../../dataStore/nodeTree";
+import { KeyNode } from "@lib/FakerUI/dataStore/nodeTree";
 import styles from "./Entities.module.scss"
 
 export default function ObjectEntities({
   node,
-  deleteCurrentEntity = () => {},
+  deleteCurrentEntity = () => { },
 }: Readonly<ObjectEntriesType>) {
   const [entries, setEntries] = useState<ObjectEntriesStateType>({
     data: [],
   });
-  
+
   useEffect(() => {
     setEntries({
       data: node.children,
@@ -32,7 +32,7 @@ export default function ObjectEntities({
   }
 
   function deleteEntry(ChildNode: KeyNodeType) {
-    node.children = node.children.filter((item) => item !== ChildNode);
+    node.children = node.children.filter((item:unknown) => item !== ChildNode);
     if (node.children.length === 0) {
       deleteCurrentEntity(node);
     }
