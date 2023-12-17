@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import Toast from "../components/Toast";
+import Toast from "../components/FeatureComponents/Toast";
+import { PORTAL_TOAST_ID } from "../utils/constants";
 
 interface ContextProps {
   triggerPopup: (e: string, k?: "success" | "error") => void;
@@ -31,10 +32,10 @@ export function ToastContextProvider({
 
 
   useEffect(() => {
-    if (!document.getElementById("popup")) {
+    if (!document.getElementById(PORTAL_TOAST_ID)) {
       const body = document.querySelector("body")
       const portalDiv = document.createElement("div")
-      portalDiv.setAttribute("id", "popup")
+      portalDiv.setAttribute("id", PORTAL_TOAST_ID)
       body?.appendChild(portalDiv)
     }
 
@@ -67,8 +68,10 @@ export function ToastContextProvider({
         {children}
         {showPopup.status &&
           createPortal(
-            <Toast text={showPopup.text} type={showPopup.type} />,
-            document.getElementById("popup")!
+            <div>
+            <Toast text={showPopup.text} type={showPopup.type} />
+            </div>,
+            document.getElementById(PORTAL_TOAST_ID)!
           )}
       </>
     </Context.Provider>

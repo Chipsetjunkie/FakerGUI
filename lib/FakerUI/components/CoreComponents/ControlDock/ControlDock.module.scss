@@ -1,4 +1,4 @@
-@use "../../base";
+@use "../../../base";
 
 $border_color: #ffffff33;
 $background_color: #030409;
@@ -8,35 +8,32 @@ $generate_button_border_color: #335414;
 
 .control_dock_root_container {
   position: absolute;
-  top: 50%;
+  top:50%;
+  left: 0%;
   transform: translateY(-50%);
-  &.control_dock_root_container__expanded{
-    width: fit-content;
-  }
-  &.control_dock_root_container__collapsed{
-    width: 0px;
-  }
+  // &.control_dock_root_container__expanded{
+  //   width: fit-content;
+  // }
+  // &.control_dock_root_container__collapsed{
+  //   width: 0px;
+  // }
 }
 
 .control_dock_container {
   position: relative;
-  z-index: -1;
   display: flex;
   padding: 12px;
-  width: 60px;
   flex-direction: column;
   align-items: center;
   gap:12px;
   background: $background_color;
   border: 1px solid $border_color;
-  border-left: none;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  height: fit-content;
+  border-radius: 12px;
+  width: 100%;
   transition: 0.5s transform;
-  transform: translateX(-150%);
+  transform: translateX(-100%);
   &.control_dock_container__show {
-    transform: translateX(0%);
+    transform: translateY(0%);
   }
 
   .separator {
@@ -49,52 +46,53 @@ $generate_button_border_color: #335414;
     flex-direction: column;
     align-items: center;
     gap:12px;
+  }
+}
 
-    .datapoint_count_input {
-      display: flex;
-      flex-direction: column-reverse;
-      align-items: center;
-      overflow: hidden;
-      width: 40px;
-      height: 48px;
-      border: 1px solid base.$base-border-color;
 
-      .count_input_tag {
-        @include base.primary_button;
-        display: flex;
-        position: relative;
-        top: 2px;
-        flex: 0.25;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        cursor: default;
-        align-items: center;
-        border-bottom: 1px solid base.$base-border-color;
-        font-family: monospace;
-        padding: 5px;
-        padding-top: 0px;
-        p {
-          font-size: 10px;
-        }
-      }
+.datapoint_count_input {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  height: 48px;
+  border: 1px solid base.$base-border-color;
 
-      input {
-        appearance: none;
-        -webkit-appearance: none;
-        border: none;
-        padding: 4px;
-        font-family: monospace;
-        outline: none;
-        font-size: 16px;
-        background-color: #000;
-        padding-top: 10px;
-        height: 20px;
-        text-align: center;
-        width: 48px;
-        color: white;
-      }
+  .count_input_tag {
+    @include base.primary_button;
+    display: flex;
+    position: relative;
+    top: 2px;
+    flex: 0.25;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    cursor: default;
+    align-items: center;
+    border-bottom: 1px solid base.$base-border-color;
+    font-family: monospace;
+    padding: 5px;
+    padding-top: 0px;
+    p {
+      font-size: 10px;
     }
+  }
+
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+    padding: 4px;
+    font-family: monospace;
+    outline: none;
+    font-size: 16px;
+    background-color: #000;
+    padding-top: 10px;
+    height: 20px;
+    text-align: center;
+    width: 48px;
+    color: white;
   }
 }
 
@@ -142,7 +140,7 @@ $generate_button_border_color: #335414;
   display: flex;
   align-items: center;
   justify-content: center;
-  left:80px;
+  left:70px;
   top:50%;
   background-color: black;
   transform: translateY(-50%);

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { KeyNodeType } from '../types';
+import { KeyNodeType } from '@lib/FakerUI/types';
 
 export class KeyNode implements KeyNodeType {
     value: string

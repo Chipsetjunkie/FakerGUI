@@ -1,5 +1,5 @@
-import { DEFAULT_OPTIONS } from "../../utils/constants";
-import { KeyNodeType } from "../../types";
+import { DEFAULT_OPTIONS } from "@lib/FakerUI/utils/constants";
+import { KeyNodeType } from "@lib/FakerUI/types";
 
 
 interface ReactiveDropdownOptionTypeState {

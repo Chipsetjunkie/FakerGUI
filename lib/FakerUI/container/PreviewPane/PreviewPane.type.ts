@@ -1,7 +1,7 @@
-import { AppState } from "../../types"
+import { AppState } from "@lib/FakerUI/types"
 
 export interface PreviewPaneProps {
     copyContent: (p: string) => void,
-    generatedData: AppState,
-    isMobile: boolean
+    generatedData: AppState
+    onClose: () => void
 }

@@ -39,4 +39,9 @@ export default defineConfig({
       },
     },
   },
+  resolve:{
+    alias:{
+      "@lib":fileURLToPath(new URL('./lib', import.meta.url))
+    }
+  }
 })

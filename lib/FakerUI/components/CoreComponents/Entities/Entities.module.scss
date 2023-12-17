@@ -1,4 +1,4 @@
-@use "../../base";
+@use "../../../base";
 
 .add_button {
   @include base.primary_button;

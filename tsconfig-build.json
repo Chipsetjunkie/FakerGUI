@@ -18,7 +18,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@lib/*": ["./lib/*"],
+    }
   },
   // src removed since we don't need it in the final build
   "include": [ "lib"],
