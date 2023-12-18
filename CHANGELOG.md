@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.5.0...v1.5.1) (2023-12-18)
+
+
+### Bug Fixes
+
+* minor ui improvements and zoom fix ([31fdcb1](https://github.com/Chipsetjunkie/vite-library-template/commit/31fdcb1e3aac7172e607a64bd052dd3bd5c04e0c))
+
+
+
 # [1.5.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.4.2...v1.5.0) (2023-12-17)
 
 
@@ -31,15 +40,6 @@
 ### Features
 
 * mobile view added ([a787d53](https://github.com/Chipsetjunkie/vite-library-template/commit/a787d53881c57590b29d72c3c0384e4ad980fe9f))
-
-
-
-## [1.3.5](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.4...v1.3.5) (2023-12-13)
-
-
-### Bug Fixes
-
-* commit hooks and cleanup ([ed564d5](https://github.com/Chipsetjunkie/vite-library-template/commit/ed564d535c25ae6d3210b9a50d47ae6c7be28e93))
 
 
 
