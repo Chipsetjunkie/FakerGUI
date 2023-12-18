@@ -29,7 +29,7 @@ export default function ObjectEntity({
     node.expression.length
       ? intialiseWithExistingDropdowns()
       : initialiseDropdowns();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [node]);
 
   function intialiseWithExistingDropdowns() {
@@ -39,7 +39,6 @@ export default function ObjectEntity({
 
     let expressionIndex = 0
     while (expressionErrors.length) {
-  
       const keys = sanitizePropertyKeys(objectRef);
 
       dropdowns.push({ id: uuidv4(), selected: expressionErrors[0] ? "N/A" : node.expression[expressionIndex], options: keys });
@@ -51,13 +50,13 @@ export default function ObjectEntity({
 
       // injecting n+1 dropdown hence checking after insertion
       if (expressionErrors[0]) break
-      
       expressionErrors = expressionErrors.slice(1)
     }
 
     setState((prev) => ({
       ...prev,
       propertyLabel: node.value,
+      isExpressionComplete: node.expression.length === 2,
       dropdowns,
     }));
   }

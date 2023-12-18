@@ -27,7 +27,7 @@ export default function ControlDock({
     count,
     updateCount,
 }: Readonly<ControlDockProps>) {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
 
 
     return (<div className={`${styles.control_dock_root_container} ${show ? styles.control_dock_root_container__expanded : styles.control_dock_root_container__collapsed}`}>

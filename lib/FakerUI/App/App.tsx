@@ -13,6 +13,7 @@ import ControlDock from "@lib/FakerUI/components/CoreComponents/ControlDock";
 
 import 'reactflow/dist/style.css';
 import Canvas from "../components/FeatureComponents/Canvas";
+import useMobileView from "../hooks/useMobileView";
 
 
 
@@ -30,7 +31,7 @@ function SchemaWrapped(props: { data: AppState }) {
 
 
 export function FakerGUI() {
-
+  const isMobile = useMobileView()
   const { triggerPopup } = useToast();
   const [isEditorView, setIsEditorView] = useState(true)
   const [generatedData, setGeneratedData] = useState<AppState>({
@@ -135,7 +136,7 @@ export function FakerGUI() {
 
   return (
     <div className={styles.root_editor_container}>
-      <Canvas node={SchemaWrapped} customNodeProps={generatedData} />
+      <Canvas<AppState> node={SchemaWrapped} customNodeProps={generatedData} isMobile={isMobile}/>
       {!showPreviewPanel ? <ControlDock
         generateData={validateAndGenerate}
         loadData={loadFromLocal}

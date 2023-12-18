@@ -10,16 +10,20 @@ import ReactFlow, {
 interface CanvasProps<T> {
     node: ComponentType<NodeProps>;
     customNodeProps: T;
+    isMobile: boolean;
 }
 
 
-const defaultViewport = { x: 0, y: 0, zoom: -5 };
+const DESKTOP_DEFAULT_VIEWPORT = { x: 100, y: 100, zoom: 1.5 }
+const MOBILE_DEFAULT_VIEWPORT = { x: 0, y: 0, zoom: 0.75 }
+
 
 // TODO: Make this generic, and update styles
 
 export default function Canvas<T>({
     node,
     customNodeProps,
+    isMobile
 }: Readonly<CanvasProps<T>>) {
     const [nodes, setNodes, onNodesChange] = useNodesState([
         {
@@ -47,15 +51,14 @@ export default function Canvas<T>({
         );
     }, [customNodeProps, setNodes]);
 
-    return (
+    return isMobile ? (
         <div style={{ width: "100svw", height: "100svh" }}>
             <ReactFlow
                 nodes={nodes}
                 onNodesChange={onNodesChange}
                 nodeTypes={nodeTypes}
-                fitView
                 style={{ backgroundColor: "#18191d" }}
-                defaultViewport={defaultViewport}
+                defaultViewport={MOBILE_DEFAULT_VIEWPORT}
                 proOptions={{ hideAttribution: true }}
             >
                 <Controls />
@@ -66,5 +69,21 @@ export default function Canvas<T>({
                 />
             </ReactFlow>
         </div>
-    );
+    ) : <div style={{ width: "100svw", height: "100svh" }} key={"flow-mobile"}>
+        <ReactFlow
+            nodes={nodes}
+            onNodesChange={onNodesChange}
+            nodeTypes={nodeTypes}
+            style={{ backgroundColor: "#18191d" }}
+            defaultViewport={DESKTOP_DEFAULT_VIEWPORT}
+            proOptions={{ hideAttribution: true }}
+        >
+            <Controls />
+            <MiniMap
+                style={{ backgroundColor: THEME.canvasMiniMapBackgroundColor }}
+                nodeColor={THEME.canvasNodeColor}
+                maskColor={THEME.canvasMaskColor}
+            />
+        </ReactFlow>
+    </div>
 }
