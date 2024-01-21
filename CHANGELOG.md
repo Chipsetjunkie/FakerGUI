@@ -1,3 +1,12 @@
+## [1.5.2](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.5.1...v1.5.2) (2024-01-21)
+
+
+### Bug Fixes
+
+* data generation limit added ([4345490](https://github.com/Chipsetjunkie/vite-library-template/commit/434549038c60886ee175f30292ba154f11b68ec2))
+
+
+
 ## [1.5.1](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.5.0...v1.5.1) (2023-12-18)
 
 
@@ -31,15 +40,6 @@
 ### Bug Fixes
 
 * [css-scoping] control dock alignment adjusted ([b83189c](https://github.com/Chipsetjunkie/vite-library-template/commit/b83189cac01a05fb7d553042ae8b3c16e4f6b869))
-
-
-
-# [1.4.0](https://github.com/Chipsetjunkie/vite-library-template/compare/v1.3.5...v1.4.0) (2023-12-14)
-
-
-### Features
-
-* mobile view added ([a787d53](https://github.com/Chipsetjunkie/vite-library-template/commit/a787d53881c57590b29d72c3c0384e4ad980fe9f))
 
 
 
