@@ -15,7 +15,7 @@ interface ControlDockProps {
     // togglePane: () => void;
     // isMobile: boolean;
     count: number;
-    updateCount: (p: number) => void;
+    updateCount: (p: string) => void;
 }
 
 // TODO: Add layout props, move styles to stylesheet
@@ -75,7 +75,7 @@ export default function ControlDock({
                         <p>count</p>
                     </div>
                     <div style={{ padding: "4px", fontFamily: "monospace", color: "white", fontSize: "16px", background: "transparent", display: "flex", flex: 0.75 }}>
-                        <input value={count} onChange={e => updateCount(+e.target.value)} />
+                        <input value={count} onChange={e => updateCount(e.target.value)} />
                     </div>
                 </div>
 

@@ -110,7 +110,15 @@ export function FakerGUI() {
     }
   }
 
-  function updateCount(count: number) {
+  function updateCount(rawCount: string) {
+    if (isNaN(+rawCount)) return
+    if (+rawCount > 99){
+      triggerPopup("max datapoint supported is 99", "error");
+      return
+    }
+
+    const count = +rawCount
+    
     setGeneratedData((prev) => ({
       ...prev,
       count,
